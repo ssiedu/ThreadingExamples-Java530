@@ -6,10 +6,10 @@ public class MTDemo extends Thread {
       	System.out.println(s+"=>Statement-1");
 	if(s.equals("BBB"))
 	{
-		System.out.println(10/0);
+		//System.out.println(10/0);
 		//stop();
 		try{
-		//Thread.sleep(25000);//milli-seconds
+		Thread.sleep(25000);//milli-seconds
 		}catch(Exception e){}
 		//Scanner sc=new Scanner(System.in);
 		//System.out.println("Enter Some Data For BBB");
@@ -25,12 +25,22 @@ public class MTDemo extends Thread {
 	MTDemo t2=new MTDemo(); t2.setName("BBB");
 	MTDemo t3=new MTDemo(); t3.setName("CCC");
 	MTDemo t4=new MTDemo(); t4.setName("DDD");
+        //t1.setPriority(Thread.MAX_PRIORITY);
+        //t2.setPriority(Thread.MIN_PRIORITY);
+        //t3.setPriority(10);
+        //System.out.println(t1.getPriority());
+        //System.out.println(t2.getPriority());
+        //System.out.println(t3.getPriority());
+        
 	t1.start();
 	t2.start();
 	t3.start();
 	t4.start();
-	//Thread.sleep(50000);
+	
+        t2.join();
+        
 	System.out.println("Main-Method-Completed");
+        
     }
 }
 
